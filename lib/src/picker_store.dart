@@ -12,7 +12,7 @@ class PickerStore extends ChangeNotifier {
 
   PickerStore({this.maxPicture, required this.minPicture, required this.filesData});
 
-  bool get canContinue => filesData.length >= minPicture && (maxPicture == null || filesData.length < maxPicture!);
+  bool get canContinue => filesData.length >= minPicture && (maxPicture == null || filesData.length <= maxPicture!);
 
   void addFile(XFile file) {
     filesData.add(file);
