@@ -29,4 +29,4 @@ if (results != null) {
 You can customize colors, show/icon the different buttons and specify minimum and maximum number of
 picture you want.
 
-To see full list of customization please read [CameraPicker](lib/camera_picker.dart#L18).
+To see full list of customization please read [CameraPicker](lib/flutter_camera_picker.dart#L18).

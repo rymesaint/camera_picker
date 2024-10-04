@@ -28,7 +28,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   flutter_hooks:
-  camera_picker:
+  flutter_camera_picker:
     path: ..
   flutter:
     sdk: flutter

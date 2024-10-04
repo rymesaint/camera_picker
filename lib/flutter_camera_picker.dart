@@ -4,7 +4,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:camera/camera.dart';
-import 'package:camera_picker/src/picker_store.dart';
+import 'package:flutter_camera_picker/src/picker_store.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -136,7 +136,7 @@ class CameraPicker extends HookWidget {
                     () => cameraController.initialize(), [cameraController]);
 
                 return PopScope(
-                  onPopInvoked: (bool didPop) async {
+                  onPopInvokedWithResult: (bool didPop, dynamic result) async {
                     if (didPop) {
                       return;
                     }

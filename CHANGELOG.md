@@ -1,3 +1,11 @@
+## 1.2.0
+
+* Continuing update of package camera picker
+
+* Fix bug maximum photo
+
+* Update dependency
+
 ## 1.1.0
 
 * Compatibility flutter 3

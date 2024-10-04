@@ -1,5 +1,5 @@
-import 'package:camera_picker/camera_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_camera_picker/flutter_camera_picker.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 void main() {
@@ -40,40 +40,44 @@ class HomePage extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              if (files.value.isEmpty) const Text('You didn\'t select any files'),
+              if (files.value.isEmpty)
+                const Text('You didn\'t select any files'),
               if (files.value.isNotEmpty) ImagesPreview(files: files.value),
               const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () async {
-                  final results = await Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => CameraPicker(
-                            initialFiles: files.value,
-                            onDelete: (file) async {
-                              final confirm = (await showDialog(
-                                    context: context,
-                                    builder: (context) => AlertDialog(
-                                      title: const Text('Delete image?'),
-                                      content: const Text('Do you want to delete this image?'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop(false);
-                                          },
-                                          child: const Text('Cancel'),
+                  final results =
+                      await Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => CameraPicker(
+                                initialFiles: files.value,
+                                onDelete: (file) async {
+                                  final confirm = (await showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                          title: const Text('Delete image?'),
+                                          content: const Text(
+                                              'Do you want to delete this image?'),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context)
+                                                    .pop(false);
+                                              },
+                                              child: const Text('Cancel'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop(true);
+                                              },
+                                              child: const Text('Ok'),
+                                            ),
+                                          ],
                                         ),
-                                        TextButton(
-                                          onPressed: () {
-                                            Navigator.of(context).pop(true);
-                                          },
-                                          child: const Text('Ok'),
-                                        ),
-                                      ],
-                                    ),
-                                  )) ??
-                                  false;
-                              return confirm;
-                            },
-                          )));
+                                      )) ??
+                                      false;
+                                  return confirm;
+                                },
+                              )));
                   if (results != null) {
                     files.value = List.from(results);
                   }
