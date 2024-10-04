@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 
 import 'package:camera/camera.dart';
@@ -10,9 +8,12 @@ class PickerStore extends ChangeNotifier {
   final int minPicture;
   final List<XFile> filesData;
 
-  PickerStore({this.maxPicture, required this.minPicture, required this.filesData});
+  PickerStore(
+      {this.maxPicture, required this.minPicture, required this.filesData});
 
-  bool get canContinue => filesData.length >= minPicture && (maxPicture == null || filesData.length <= maxPicture!);
+  bool get canContinue =>
+      filesData.length >= minPicture &&
+      (maxPicture == null || filesData.length <= maxPicture!);
 
   void addFile(XFile file) {
     filesData.add(file);
@@ -24,7 +25,7 @@ class PickerStore extends ChangeNotifier {
     notifyListeners();
     try {
       await File(file.path).delete();
-    } catch(ex) {
+    } catch (ex) {
       //nothing to do if delete file fails
     }
   }
