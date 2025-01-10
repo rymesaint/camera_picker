@@ -1,3 +1,7 @@
+## 1.3.0
+
+* Windows platform availability: The application now supports the Windows operating system, ensuring seamless functionality on Windows 10 and later.
+
 ## 1.2.0
 
 * Continuing update of package camera picker
